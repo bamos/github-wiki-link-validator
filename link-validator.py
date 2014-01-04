@@ -51,7 +51,10 @@ if __name__ == '__main__':
   baseUrl = args.url
   validate(args.url)
 
-  for url, invalidUrls in invalidWikiPages:
-    print("+ " + url)
-    for invalidUrl in invalidUrls:
-      print("  + " + invalidUrl)
+  if len(invalidWikiPages) == 0:
+    print("No invalid links found.")
+  else:
+    for url, invalidUrls in invalidWikiPages:
+      print("+ " + url)
+      for invalidUrl in invalidUrls:
+        print("  + " + invalidUrl)
