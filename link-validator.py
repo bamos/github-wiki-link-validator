@@ -52,6 +52,6 @@ if __name__ == '__main__':
   validate(args.url)
 
   for url, invalidUrls in invalidWikiPages:
-    print("+ [[ " + url + " ]]")
+    print("+ " + url)
     for invalidUrl in invalidUrls:
-      print(" + [[ " + invalidUrl + " ]]")
+      print("  + " + invalidUrl)
