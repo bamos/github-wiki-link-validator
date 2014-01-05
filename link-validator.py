@@ -30,9 +30,10 @@ def validate(url):
       fullExternalUrl = urljoin(url, urldefrag(externalUrl['href']).url)
       if baseUrl in fullExternalUrl and \
           not fullExternalUrl.endswith('/_history'):
-        wikiUrls.append(fullExternalUrl)
         if externalUrl.has_attr('class') and 'absent' in externalUrl['class']:
           invalidUrls.append(fullExternalUrl)
+        else:
+          wikiUrls.append(fullExternalUrl)
 
   if len(invalidUrls) > 0:
     invalidWikiPages.append((url, invalidUrls))
