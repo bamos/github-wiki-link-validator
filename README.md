@@ -33,6 +33,3 @@ $ ./link-validator.py https://github.com/bamos/github-wiki-link-validator/wiki
   + https://github.com/bamos/github-wiki-link-validator/wiki/C
   + https://github.com/bamos/github-wiki-link-validator/wiki/D
   + https://github.com/bamos/github-wiki-link-validator/wiki/E
-+ https://github.com/bamos/github-wiki-link-validator/wiki/Link-Validator-Wiki
-  + https://github.com/bamos/github-wiki-link-validator/wiki/links
-  + https://github.com/bamos/github-wiki-link-validator/wiki/invalid
