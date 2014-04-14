@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python3
 #
 # link-validator.py
 # Brandon Amos <http://bamos.io>
