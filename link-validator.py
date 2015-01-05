@@ -25,15 +25,18 @@ def validate(url):
 
   wikiUrls = []
   invalidUrls = []
-  for externalUrl in BeautifulSoup(content, parse_only=SoupStrainer('a')):
-    if externalUrl.has_attr('href'):
-      fullExternalUrl = urljoin(url, urldefrag(externalUrl['href']).url)
-      if baseUrl in fullExternalUrl and \
-          not fullExternalUrl.endswith('/_history'):
-        if externalUrl.has_attr('class') and 'absent' in externalUrl['class']:
-          invalidUrls.append(fullExternalUrl)
-        else:
-          wikiUrls.append(fullExternalUrl)
+  # This may see redundant, but without the `.find_all('a')`, soup will also
+  # contain the `DocType` element which does not have an `href` attribute.
+  # See <http://stackoverflow.com/questions/17943992/beautifulsoup-and-soupstrainer-for-getting-links-dont-work-with-hasattr-returni>.
+  soup = BeautifulSoup(content, parse_only=SoupStrainer('a', href=True)).find_all('a')
+  for externalUrl in soup:
+    fullExternalUrl = urljoin(url, urldefrag(externalUrl['href']).url)
+    if baseUrl in fullExternalUrl and \
+        not fullExternalUrl.endswith('/_history'):
+      if externalUrl.has_attr('class') and 'absent' in externalUrl['class']:
+        invalidUrls.append(fullExternalUrl)
+      else:
+        wikiUrls.append(fullExternalUrl)
 
   if len(invalidUrls) > 0:
     invalidWikiPages.append((url, invalidUrls))
